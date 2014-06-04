@@ -5,9 +5,9 @@
 	
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
-	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-	
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
 	
 	<style type="text/css">
 		html, body html, body {
@@ -38,13 +38,17 @@
 			</button>
 		</div>
 	</div>
+	<script src="https://raw.githubusercontent.com/jimhigson/oboe.js/v1.14.3/dist/oboe-browser.min.js"></script>
 	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 	<script type="text/javascript" language="javascript">
-var map = L.map('map').locate({setView: true, maxZoom: 16});
+		var map = L.map('map').locate({setView: true, maxZoom: 16});
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 				attribution: ':)',
 				maxZoom: 18
 		}).addTo(map);
+		function onLocationFound(e) {
+			var marker = L.marker(e.latlng).addTo(map);
+		}
 	</script>
 </body>
 </html>
