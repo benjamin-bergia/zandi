@@ -82,7 +82,7 @@
 
 		function onLocationFound(e) {
 			var locationCircle = L.circle(e.latlng, 0).addTo(map);
-			locationCircle.bindPopup("Coordinates: " + e.latlng).openPopup();
+			locationCircle.bindPopup(e.latlng + e.accuracy).openPopup();
 			setInterval(function(){updateLocation(locationCircle, e);}, 1000);
 		}
 
