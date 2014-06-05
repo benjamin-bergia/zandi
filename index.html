@@ -27,13 +27,13 @@
 	<div id="map"></div>
 	<div id="dock" class="pure-g">
 		<div class="pure-u-2-5">
-			<button class="pure-button pure-button-primary">
+			<button id="like_button" class="pure-button pure-button-primary">
 				I like ...
 			</button>
 		</div>
 		<div class="pure-u-1-5"></div>
 		<div class="pure-u-2-5">
-			<button class="pure-button pure-button-primary">
+			<button id="dislike_button"class="pure-button pure-button-primary">
 				... or not
 			</button>
 		</div>
@@ -41,6 +41,31 @@
 	<!-- <script src="https://raw.githubusercontent.com/jimhigson/oboe.js/v1.14.3/dist/oboe-browser.min.js"></script> -->
 	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 	<script type="text/javascript" language="javascript">
+		var like_button = document.getElementById("like_button");
+		var dislike_button = document.getElementById("dislike_button");
+
+		if (like_button.addEventListener)
+	    		like_button.addEventListener("click", addLike, false);
+	    	else if (like_button.attachEvent)
+	    		like_button.attachEvent('onclick', addLike);
+
+		if (dislike_button.addEventListener)
+	    		dislike_button.addEventListener("click", addDislike, false);
+	    	else if (dislike_button.attachEvent)
+	    		dislike_button.attachEvent('onclick', addDislike);
+
+		var geojsonFeature = {
+			"type": "Feature",
+			"properties": {
+				"name": "Coors Field",
+				"amenity": "Baseball Stadium",
+				"popupContent": "This is where the Rockies play!"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-104.99404, 39.75621]
+			}
+		};
 
 		var map = L.map('map');
 
@@ -56,6 +81,14 @@
 
 		function onLocationError(e) {
 			alert(e.message);
+		}
+
+		function addLike {
+				
+		}
+
+		function addDislike {
+				
 		}
 
 		map.on('locationfound', onLocationFound);
