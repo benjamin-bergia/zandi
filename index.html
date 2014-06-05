@@ -74,13 +74,15 @@
 				maxZoom: 18
 		}).addTo(map);
 
-		function displayLocation(e) {
+		function updateLocation(locationCircle, e) {
 			var radius = e.accuracy / 2;
-			L.circle(e.latlng, radius).addTo(map);
+			locationCircle.setLatLng(e.latlng);
+			locationCircle.setRadius(radius);
 		}
 
 		function onLocationFound(e) {
-			setInterval(function(){displayLocation(e);}, 1000);
+			var locationCircle = L.circle(e.latlng, 0).addTo(map);
+			setInterval(function(){updateLocation(locationCircle, e);}, 1000);
 		}
 
 		function onLocationError(e) {
