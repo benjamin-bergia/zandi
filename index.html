@@ -38,7 +38,7 @@
 			</button>
 		</div>
 	</div>
-	<!-- <script src="https://raw.githubusercontent.com/jimhigson/oboe.js/v1.14.3/dist/oboe-browser.min.js"></script> -->
+	<script src="js/oboe-browser.min.js"></script>
 	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 	<script type="text/javascript" language="javascript">
 		var like_button = document.getElementById("like_button");
@@ -54,20 +54,9 @@
 	    	else if (dislike_button.attachEvent)
 	    		dislike_button.attachEvent('onclick', addDislike);
 
-		var geojsonFeature = {
-			"type": "Feature",
-			"properties": {
-				"name": "Coors Field",
-				"amenity": "Baseball Stadium",
-				"popupContent": "This is where the Rockies play!"
-			},
-			"geometry": {
-				"type": "Point",
-				"coordinates": [-104.99404, 39.75621]
-			}
-		};
-
 		var map = L.map('map');
+		var marker_layer = L.geoJson().addTo(map);
+		marker_layer.addData('data/markers.json');
 
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 				attribution: ':)',
