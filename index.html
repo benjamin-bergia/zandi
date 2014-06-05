@@ -80,7 +80,7 @@
 		}
 
 		function onLocationFound(e) {
-			setInterval(displayLocation(e), 1000);
+			setInterval(function(){displayLocation(e);}, 1000);
 		}
 
 		function onLocationError(e) {
