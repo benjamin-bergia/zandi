@@ -2502,7 +2502,7 @@ function oboe(arg1, arg2) {
       window.oboe = oboe;
    }
 })(window, Object, Array, Error, JSON);
-e
+
       // modified without side effects to the caller. We don't
       // want to change objects that the user passes in.
       JSON.parse(JSON.stringify(headers))

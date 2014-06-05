@@ -55,8 +55,14 @@
 	    		dislike_button.attachEvent('onclick', addDislike);
 
 		var map = L.map('map');
-		var marker_layer = L.geoJson().addTo(map);
-		marker_layer.addData('data/markers.json');
+
+		oboe('data/markers.json').node('markers.*', function(marker) {
+				L.circle(marker.coordinates, 25, {
+    					color: 'red',
+    					fillColor: '#f03',
+    					fillOpacity: 0.5
+				}).addTo(map);
+   			});
 
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 				attribution: ':)',
