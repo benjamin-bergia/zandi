@@ -1,0 +1,35 @@
+[
+	{
+		"type": "Feature",
+		"geometry": {
+			"type": "Point",
+			"coordinates": [125.6, 10.1]
+		},
+		"properties": {
+			"number": 1,
+			"mood": 80
+		}
+	},
+	{
+		"type": "Feature",
+		"geometry": {
+			"type": "Point",
+			"coordinates": [125.7, 10.1]
+		},
+		"properties": {
+			"number": 9,
+			"mood": 33
+		}
+	},
+	{
+		"type": "Feature",
+		"geometry": {
+			"type": "Point",
+			"coordinates": [125.6, 11.1]
+		},
+		"properties": {
+			"number": 4,
+			"mood": 0
+		}
+	}
+]
