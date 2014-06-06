@@ -43,7 +43,7 @@
 	<script src="js/oboe-browser.min.js"></script>
 	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 	<script type="text/javascript" language="javascript">
-		function () {
+		(function () {
 			var like_button = document.getElementById("like_button");
 			var dislike_button = document.getElementById("dislike_button");
 
@@ -101,7 +101,7 @@
 			map.on('locationerror', onLocationError);
 
 			map.locate({setView: true, maxZoom: 16});
-		}();
+		}())
 	</script>
 </body>
 </html>
