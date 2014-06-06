@@ -62,7 +62,7 @@
 			var map = L.map('map');
 
 			oboe('data/beacons.json').node('beacons.*', function(beacon) {
-					L.circle(marker.coordinates, beacon.population, {
+					L.circle(beacon.coordinates, beacon.population, {
 							stroke: false,
 							fill: true,
 							fillColor: '#03f',
