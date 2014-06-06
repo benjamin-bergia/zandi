@@ -76,10 +76,7 @@
 						}).addTo(map);
 				});
 
-			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-					attribution: ':)',
-					maxZoom: 18
-			}).addTo(map);
+			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
 
 			function updateLocation(locationCircle, e) {
 				var radius = e.accuracy / 2;
