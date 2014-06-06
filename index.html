@@ -45,26 +45,22 @@
 		var dislike_button = document.getElementById("dislike_button");
 
 		if (like_button.addEventListener) {
-	    		like_button.addEventListener("click", addLike, false);
+			like_button.addEventListener("click", addLike, false);
 		} else if (like_button.attachEvent) {
-	    		like_button.attachEvent('onclick', addLike);
+			like_button.attachEvent('onclick', addLike);
 		}
 
 		if (dislike_button.addEventListener) {
-	    		dislike_button.addEventListener("click", addDislike, false);
+			dislike_button.addEventListener("click", addDislike, false);
 		} else if (dislike_button.attachEvent) {
-	    		dislike_button.attachEvent('onclick', addDislike);
+			dislike_button.attachEvent('onclick', addDislike);
 		}
 
 		var map = L.map('map');
 
 		oboe('data/markers.json').node('markers.*', function(marker) {
-				L.circle(marker.coordinates, 25, {
-    					color: 'red',
-    					fillColor: '#f03',
-    					fillOpacity: 0.5
-				}).addTo(map);
-   			});
+				L.circle(marker.coordinates, 25).addTo(map);
+			});
 
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 				attribution: ':)',
