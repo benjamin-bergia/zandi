@@ -68,32 +68,8 @@
 			var map = L.map('map');
 			var COLORS = ['#FF6138', '#FFFF9D', '#BEEB9F', '#79BD8F', '#00A388'];
 
-			var person = function () {
-			
-				// Private
-			
-				var name = "Robert";
-			
-				return {
-				
-						getName : function () {
-							  
-							  			return name;
-							  
-							  		},
-				
-						setName : function (newName) {
-							  
-							  			name = newName;
-							  
-							  		}
-				
-					};
-			
-			}();
-
 			oboe('data/beacons.json').node('beacons.*', function(beacon) {
-					L.circle(beacon.coordinates, beacon.population, {
+					L.circle(beacon.coordinates, 50, {
 							stroke: false,
 							fill: true,
 							fillColor: COLORS[beacon.mood],
