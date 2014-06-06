@@ -16,7 +16,7 @@
 			height:100%;
 		}
 		#map {
-			height: 90%;
+			height: 95%;
 		}
 		.pure-button {
 			width: 100%;	
@@ -26,73 +26,82 @@
 <body>
 	<div id="map"></div>
 	<div id="dock" class="pure-g">
-		<div class="pure-u-2-5">
+		<div class="pure-u-1-12"></div>
+		<div class="pure-u-1-3">
 			<button id="like_button" class="pure-button pure-button-primary">
 				I like ...
 			</button>
 		</div>
-		<div class="pure-u-1-5"></div>
-		<div class="pure-u-2-5">
+		<div class="pure-u-1-6"></div>
+		<div class="pure-u-1-3">
 			<button id="dislike_button"class="pure-button pure-button-primary">
 				... or not
 			</button>
 		</div>
+		<div class="pure-u-1-12"></div>
 	</div>
 	<script src="js/oboe-browser.min.js"></script>
 	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 	<script type="text/javascript" language="javascript">
-		var like_button = document.getElementById("like_button");
-		var dislike_button = document.getElementById("dislike_button");
+		function () {
+			var like_button = document.getElementById("like_button");
+			var dislike_button = document.getElementById("dislike_button");
 
-		if (like_button.addEventListener) {
-			like_button.addEventListener("click", addLike, false);
-		} else if (like_button.attachEvent) {
-			like_button.attachEvent('onclick', addLike);
-		}
+			if (like_button.addEventListener) {
+				like_button.addEventListener("click", addLike, false);
+			} else if (like_button.attachEvent) {
+				like_button.attachEvent('onclick', addLike);
+			}
 
-		if (dislike_button.addEventListener) {
-			dislike_button.addEventListener("click", addDislike, false);
-		} else if (dislike_button.attachEvent) {
-			dislike_button.attachEvent('onclick', addDislike);
-		}
+			if (dislike_button.addEventListener) {
+				dislike_button.addEventListener("click", addDislike, false);
+			} else if (dislike_button.attachEvent) {
+				dislike_button.attachEvent('onclick', addDislike);
+			}
 
-		var map = L.map('map');
+			var map = L.map('map');
 
-		oboe('data/markers.json').node('markers.*', function(marker) {
-				L.circle(marker.coordinates, 25).addTo(map);
-			});
+			oboe('data/beacons.json').node('beacons.*', function(beacon) {
+					L.circle(marker.coordinates, 25, {
+							stroke: false,
+							fill: true,
+							fillColor: '#03f',
+							fillOpacity: beacon.
+						}).addTo(map);
+				});
 
-		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-				attribution: ':)',
-				maxZoom: 18
-		}).addTo(map);
+			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+					attribution: ':)',
+					maxZoom: 18
+			}).addTo(map);
 
-		function updateLocation(locationCircle, e) {
-			var radius = e.accuracy / 2;
-			locationCircle.setLatLng(e.latlng);
-			locationCircle.setRadius(radius);
-		}
+			function updateLocation(locationCircle, e) {
+				var radius = e.accuracy / 2;
+				locationCircle.setLatLng(e.latlng);
+				locationCircle.setRadius(radius);
+			}
 
-		function onLocationFound(e) {
-			var locationCircle = L.circle(e.latlng, 0).addTo(map);
-			locationCircle.bindPopup(e.latlng + e.accuracy).openPopup();
-			setInterval(function(){updateLocation(locationCircle, e);}, 1000);
-		}
+			function onLocationFound(e) {
+				var locationCircle = L.circle(e.latlng, 0).addTo(map);
+				locationCircle.bindPopup(e.latlng + e.accuracy).openPopup();
+				setInterval(function(){updateLocation(locationCircle, e);}, 1000);
+			}
 
-		function onLocationError(e) {
-			alert(e.message);
-		}
+			function onLocationError(e) {
+				alert(e.message);
+			}
 
-		function addLike() {
-		}
+			function addLike() {
+			}
 
-		function addDislike() {
-		}
+			function addDislike() {
+			}
 
-		map.on('locationfound', onLocationFound);
-		map.on('locationerror', onLocationError);
+			map.on('locationfound', onLocationFound);
+			map.on('locationerror', onLocationError);
 
-		map.locate({setView: true, maxZoom: 16});
+			map.locate({setView: true, maxZoom: 16});
+		}();
 	</script>
 </body>
 </html>
