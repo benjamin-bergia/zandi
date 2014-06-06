@@ -44,15 +44,17 @@
 		var like_button = document.getElementById("like_button");
 		var dislike_button = document.getElementById("dislike_button");
 
-		if (like_button.addEventListener)
+		if (like_button.addEventListener) {
 	    		like_button.addEventListener("click", addLike, false);
-	    	else if (like_button.attachEvent)
+		} else if (like_button.attachEvent) {
 	    		like_button.attachEvent('onclick', addLike);
+		}
 
-		if (dislike_button.addEventListener)
+		if (dislike_button.addEventListener) {
 	    		dislike_button.addEventListener("click", addDislike, false);
-	    	else if (dislike_button.attachEvent)
+		} else if (dislike_button.attachEvent) {
 	    		dislike_button.attachEvent('onclick', addDislike);
+		}
 
 		var map = L.map('map');
 
