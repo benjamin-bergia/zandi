@@ -81,7 +81,7 @@
 					L.rectangle(zone.coordinates).addTo(map);
 				});
 
-			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
+			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { maxZoom: 14 }).addTo(map);
 
 			function updateLocation(locationCircle, e) {
 				var radius = e.accuracy / 2;
@@ -108,7 +108,7 @@
 			map.on('locationfound', onLocationFound);
 			map.on('locationerror', onLocationError);
 
-			map.locate({setView: true, maxZoom: 16});
+			map.locate({setView: true, maxZoom: 12});
 		}())
 	</script>
 </body>
