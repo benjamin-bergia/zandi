@@ -68,13 +68,17 @@
 			var map = L.map('map');
 			var COLORS = ['#FFFFFA', '#A1A194', '#5B605F', '#464646', '#FF6600'];
 
-			oboe('data/beacons.json').node('beacons.*', function(beacon) {
+			oboe('data/beacons.json')
+				.node('beacons.*', function(beacon) {
 					L.circle(beacon.coordinates, 50, {
 							stroke: false,
 							fill: true,
 							fillColor: COLORS[beacon.mood],
 							fillOpacity: beacon.density
 						}).addTo(map);
+				})
+				.node('zones.*', function(zone) {
+					L.rectangle(zone.coordinates).addTo(map);
 				});
 
 			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);

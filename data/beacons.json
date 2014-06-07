@@ -1,9 +1,8 @@
 {
-	"beacons": [
-		{"coordinates": [31.2713, 121.58469], "density": 1.0, "mood": 0},
-		{"coordinates": [31.2714, 121.58469], "density": 1.0, "mood": 1},
-		{"coordinates": [31.2715, 121.58469], "density": 1.0, "mood": 2},
-		{"coordinates": [31.2716, 121.58469], "density": 1.0, "mood": 3},
-		{"coordinates": [31.2717, 121.58469], "density": 1.0, "mood": 4},
+	"zones": [
+		{"coordinates": [[31.27120, 121.58470], [31.27129, 121.58479]], "density": 0.5, "mood": 0},
+		{"coordinates": [[31.27100, 121.58400], [31.27199, 121.58499]], "density": 0.5, "mood": 0},
+		{"coordinates": [[31.27000, 121.58000], [31.27999, 121.58999]], "density": 0.5, "mood": 0},
+		{"coordinates": [[31.20000, 121.50000], [31.29999, 121.59999]], "density": 0.5, "mood": 0}
 	]
 }
